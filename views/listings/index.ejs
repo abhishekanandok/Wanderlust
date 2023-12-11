@@ -16,12 +16,14 @@
       text-align: center;
       margin-top: 2rem;
       margin-right: 2rem;
+      padding-bottom: 1rem;
       opacity: 0.7;
     }
 
     .filter:hover {
       opacity: 1;
       cursor: pointer;
+      text-decoration: underline;
     }
 
     .filter p {
@@ -37,7 +39,7 @@
       border-radius: 1rem;
       height: 3rem;
       padding: 1rem;
-      margin-left: 3rem;
+      margin-left: 2rem;
       display: flex;
       align-items: center;
     }
@@ -106,6 +108,17 @@
     </div>
 
 
+    <div><button id="filterButton"><i class="fa-solid fa-arrow-down-wide-short"></i> Filters</button></div>
+    <!-- Filter popup -->
+    <div class="filter-popup" id="filterPopup">
+      <div class="filter-content" id="filterContent">
+        <!-- Location options with checkboxes will be displayed here -->
+      </div>
+      <button id="submitFilter">Submit</button>
+    </div>
+
+
+
     <div class="tax-toggle">
       <div class="form-check-reverse form-switch">
         <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
@@ -117,7 +130,7 @@
 
 
 
-  <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1 mt-3">
+  <div class="row row-cols-lg-4 row-cols-md-3 row-cols-sm-1 mt-3">
     <% for(let listing of allListings) { %>
       <a href="/listings/<%= listing._id %>" class="listing-link">
         <div class="card col">
@@ -129,6 +142,9 @@
                 <%= listing.title %>
               </b> <br>
               &#8377; <%= listing.price.toLocaleString("en-IN") %> / night <i class="tax-info"> &nbsp; +18% GST</i>
+                <p><i class="fa-solid fa-location-dot"></i>
+                  <%= listing.location %>
+                </p>
             </p>
           </div>
         </div>
@@ -137,7 +153,36 @@
   </div>
 
 
+  <div class="mt-5 mb-5 card col-6 offset-3">
+    <p class="text-center"><b>Continue exploring lakefront homes</b></p>
+    <button type="button" class="btn btn-secondary btn-lg">Show more</button>
+  </div>
+
+
+  <section class="founder-ceo-section">
+    <div class="founder">
+      <img src="https://res.cloudinary.com/dosg3vve9/image/upload/v1702187208/d0ugpkjbuelkahzkrl9r.jpg" alt="Founder"
+        class="founder-photo">
+      <h3>Abhishek Anand</h3>
+      <p>Founder</p>
+      <p>Open Source Contributor | MERN Stack Developer | JavaScript, MongoDB, Express, React, Node | Learned C & Web
+        development | C++,DSA,Java,Golang | Learner</p>
+    </div>
+
+    <!-- <div class="ceo">
+      <img src="https://res.cloudinary.com/dosg3vve9/image/upload/v1702187227/f12hpitiyznpvkfqiir8.png" alt="CEO"
+        class="ceo-photo">
+      <h3>Vikas Kumar</h3>
+      <p>CEO</p>
+      <p>Founded our company with a mission to revolutionize how we interact with technology and commitment to
+        innovation and customer-centric solutions.</p>
+    </div> -->
+  </section>
+
+
+
   <script>
+    //tax js
     let taxSwitch = document.getElementById("flexSwitchCheckDefault");
     taxSwitch.addEventListener("click", () => {
       let taxInfo = document.getElementsByClassName("tax-info");
@@ -148,5 +193,101 @@
           info.style.display = "none";
         }
       }
-    })
+    });
+
+
+
+    //filter button
+    const filterButton = document.getElementById('filterButton');
+    const filterPopup = document.getElementById('filterPopup');
+    const filterContent = document.getElementById('filterContent');
+    const submitButton = document.getElementById('submitFilter');
+
+    // Function to fetch location options from the backend
+    async function fetchLocations() {
+      try {
+        const response = await fetch('/locations');
+        const locations = await response.json();
+        displayLocations(locations);
+      } catch (error) {
+        console.error('Error fetching locations:', error);
+      }
+    }
+
+    // Function to display location options with checkboxes in the popup
+    function displayLocations(locations) {
+      filterContent.innerHTML = ''; // Clear previous options
+      locations.forEach(location => {
+        const option = document.createElement('div');
+        option.classList.add('location-option');
+
+        const checkbox = document.createElement('input');
+        checkbox.type = 'checkbox';
+        checkbox.value = location;
+        checkbox.id = `location_${location.replace(/\s/g, '_')}`; // Create unique ID for each checkbox
+        const label = document.createElement('label');
+        label.htmlFor = `location_${location.replace(/\s/g, '_')}`;
+        label.textContent = location;
+
+        option.appendChild(checkbox);
+        option.appendChild(label);
+
+        filterContent.appendChild(option);
+      });
+    }
+
+    // Function to get selected locations on submit
+    function getSelectedLocations() {
+      const checkboxes = document.querySelectorAll('.location-option input[type="checkbox"]');
+      const selectedLocations = Array.from(checkboxes)
+        .filter(checkbox => checkbox.checked)
+        .map(checkbox => checkbox.value);
+      return selectedLocations;
+    }
+
+    // Function to open filter popup
+    function openFilterPopup() {
+      const buttonRect = filterButton.getBoundingClientRect();
+      filterPopup.style.display = 'block';
+      filterPopup.style.top = '50%'; // Center vertically
+      filterPopup.style.left = '50%'; // Center horizontally
+      filterPopup.style.transform = 'translate(-50%, -50%)'; // Adjust position
+    }
+
+
+    // Function to close filter popup
+    function closeFilterPopup() {
+      filterPopup.style.display = 'none';
+    }
+
+    // Event listener for the filter button click
+    filterButton.addEventListener('click', () => {
+      fetchLocations(); // Fetch location options when the button is clicked
+      openFilterPopup();
+    });
+
+    // Event listener for the submit button click
+    submitButton.addEventListener('click', () => {
+      const selectedLocations = getSelectedLocations();
+      console.log('Selected locations:', selectedLocations);
+      closeFilterPopup(); // Close the popup after submission
+
+      // Construct URL with selected locations as query parameters
+      const queryParams = selectedLocations.map(location => `location=${encodeURIComponent(location)}`).join('&');
+      const filterURL = `/filter?${queryParams}`;
+
+      // Redirect to the filter page with selected locations as query parameters
+      window.location.href = filterURL;
+    });
+
+
+    // Close the popup when clicking outside of it
+    document.addEventListener('click', event => {
+      if (!filterPopup.contains(event.target) && event.target !== filterButton) {
+        closeFilterPopup();
+      }
+    });
+
+
+
   </script>

@@ -253,3 +253,165 @@ select {
     height: 400px;
     width: 80vh;
 }
+
+
+/**********************************/
+/*              founder          */
+/*********************************/
+.founder-ceo-section {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding-top: 20px;
+}
+
+.founder,
+.ceo {
+    text-align: center;
+    max-width: 500px;
+}
+
+.founder-photo,
+.ceo-photo {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    /* Creates circular shape */
+    object-fit: cover;
+    /* Maintains aspect ratio */
+    border: 2px solid #ccc;
+    /* Border for the circle */
+    margin-bottom: 10px;
+    box-shadow: 0 0 20px #ce7171, 0 0 30px #93d5ed, 0 0 40px #eef7aa;
+}
+
+h3 {
+    margin-bottom: 5px;
+}
+
+.founder p,
+.ceo p {
+    color: #666;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+
+
+/**********************************/
+/*              search          */
+/*********************************/
+/* Search box styles */
+.search-container {
+    position: relative;
+    width: 50vh;
+}
+
+#searchInput {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    outline: none;
+    font-size: 16px;
+}
+
+/* Suggestion box styles */
+.suggestions-dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    /* Same width as the search box */
+    max-height: 300px;
+    /* Adjust as needed */
+    overflow-y: auto;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2), 0 0 10px rgba(0, 0, 0, 0.1) inset;
+    display: none;
+    z-index: 1;
+}
+
+.suggestion {
+    padding: 10px;
+    cursor: pointer;
+}
+
+.suggestion:hover {
+    background-color: #ff9b9b;
+}
+
+/* Glow effect for suggestion box */
+.suggestions-dropdown:focus-within {
+    box-shadow: 0 0 20px #719ece, 0 0 30px #93d5ed, 0 0 40px #aadff7;
+}
+
+
+
+
+
+
+/**********************************/
+/*         filter button          */
+/*********************************/
+/* Styles for filter button */
+#filterButton {
+    padding: 10px 5px;
+    background-color: #ff6161;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+#filterButton:hover{
+    background-color: #fc0000;
+  } 
+  
+  /* Filter popup styles */
+  /* Filter popup styles */
+.filter-popup {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2), 0 0 10px rgba(0, 0, 0, 0.1) inset;
+  }
+  
+  /* Adjust the submit button style */
+  #submitFilter {
+    display: block;
+    margin: 10px;
+    background-color: #ff8a86;
+    color: white;
+    border-radius: 5px;
+  }
+
+  #submitFilter:hover {
+    background-color: #fa0707;
+  }
+  
+  
+  .filter-content {
+    max-height: 400px; /* Adjust as needed */
+    width: 400px;
+    height: 800px;
+    overflow-y: auto;
+  }
+  
+  .location-option {
+    padding: 10px;
+    cursor: pointer;
+  }
+  
+  .location-option:hover {
+    background-color: #f0f0f0;
+  }
