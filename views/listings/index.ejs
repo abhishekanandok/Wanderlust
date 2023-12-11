@@ -1,108 +1,63 @@
 <% layout("/layouts/boilerplate") %>
 
-  <!-- <h3>All Listings</h3> -->
-  <!-- <form method="GET" action="/listings/new">
-      <button>Create New Listing</button>
-    </form> -->
-
-  <style>
-    #filters {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-    }
-
-    .filter {
-      text-align: center;
-      margin-top: 2rem;
-      margin-right: 2rem;
-      padding-bottom: 1rem;
-      opacity: 0.7;
-    }
-
-    .filter:hover {
-      opacity: 1;
-      cursor: pointer;
-      text-decoration: underline;
-    }
-
-    .filter p {
-      font-size: 0.8rem;
-    }
-
-    .tax-info {
-      display: none;
-    }
-
-    .tax-toggle {
-      border: 1px solid black;
-      border-radius: 1rem;
-      height: 3rem;
-      padding: 1rem;
-      margin-left: 2rem;
-      display: flex;
-      align-items: center;
-    }
-  </style>
-
 
   <div class="" id="filters">
-    <div class="filter">
+    <div class="filter" onclick="filterByType('Rooms')">
       <div><i class="fa-solid fa-fire"></i></div>
       <p>Trending</p>
     </div>
 
-    <div class="filter">
+    <div class="filter" onclick="filterByType('Rooms')">
       <div><i class="fa-solid fa-bed"></i></div>
       <p>Rooms</p>
     </div>
 
-    <div class="filter">
+    <div class="filter" onclick="filterByType('Iconic Cities')">
       <div><i class="fa-solid fa-mountain-city"></i></div>
       <p>Iconic Cities</p>
     </div>
 
-    <div class="filter">
+    <div class="filter" onclick="filterByType('Mountain')">
       <div><i class="fa-solid fa-mountain"></i></div>
       <p>Mountain</p>
     </div>
 
-    <div class="filter">
+    <div class="filter" onclick="filterByType('Castles')">
       <div><i class="fa-brands fa-fort-awesome"></i></div>
       <p>Castles</p>
     </div>
 
-    <div class="filter">
+    <div class="filter" onclick="filterByType('Amazing pools')">
       <div><i class="fa-solid fa-person-swimming"></i></div>
       <p>Amazing pools</p>
     </div>
 
-    <div class="filter">
+    <div class="filter" onclick="filterByType('Farms')">
       <div><i class="fa-solid fa-cow"></i></div>
       <p>Farms</p>
     </div>
 
-    <div class="filter">
+    <div class="filter" onclick="filterByType('Camping')">
       <div><i class="fa-solid fa-tents"></i></div>
       <p>Camping</p>
     </div>
 
-    <div class="filter">
+    <div class="filter" onclick="filterByType('Arctic')">
       <div><i class="fa-regular fa-snowflake"></i></div>
       <p>Arctic</p>
     </div>
 
-    <div class="filter">
+    <div class="filter" onclick="filterByType('Beach')">
       <div><i class="fa-solid fa-umbrella-beach"></i></div>
       <p>Beach</p>
     </div>
 
-    <div class="filter">
+    <div class="filter" onclick="filterByType('Arctic')">
       <div><i class="fa-regular fa-snowflake"></i></div>
       <p>Arctic</p>
     </div>
 
-    <div class="filter">
+    <div class="filter" onclick="filterByType('Beach')">
       <div><i class="fa-solid fa-umbrella-beach"></i></div>
       <p>Beach</p>
     </div>
@@ -131,26 +86,42 @@
 
 
   <div class="row row-cols-lg-4 row-cols-md-3 row-cols-sm-1 mt-3">
-    <% for(let listing of allListings) { %>
-      <a href="/listings/<%= listing._id %>" class="listing-link">
-        <div class="card col">
-          <img src="<%= listing.image.url %>" class="card-img-top" alt="listing_image" style="height: 20rem;">
-          <div class="card-img-overlay"></div>
-          <div class="card-body">
-            <p class="card-text">
-              <b>
-                <%= listing.title %>
-              </b> <br>
-              &#8377; <%= listing.price.toLocaleString("en-IN") %> / night <i class="tax-info"> &nbsp; +18% GST</i>
-                <p><i class="fa-solid fa-location-dot"></i>
-                  <%= listing.location %>
-                </p>
-            </p>
+    <% let filteredListings=selectedLocations ? allListings.filter(listing=>
+      selectedLocations.includes(listing.location))
+      : allListings;
+
+      // Check for type filtering
+      filteredListings = type ? filteredListings.filter(listing => type.includes(listing.type))
+      : filteredListings;
+      %>
+
+      <% for (let listing of filteredListings) { %>
+        <a href="/listings/<%= listing._id %>" class="listing-link">
+          <div class="card col">
+            <img src="<%= listing.image.url %>" class="card-img-top" alt="listing_image" style="height: 20rem;">
+            <div class="card-img-overlay"></div>
+            <div class="card-body">
+              <p class="card-text">
+                <b>
+                  <%= listing.title %>
+                </b> <br>
+                &#8377; <%= listing.price.toLocaleString("en-IN") %> / night <i class="tax-info"> &nbsp; +18% GST</i>
+                  <p><i class="fa-solid fa-location-dot"></i>
+                    <%= listing.location %> <br>
+                    <i class="fa-solid fa-tag"></i>
+                  <%= listing.type %>
+                  </p>
+                  
+                  </p>
+              </p>
+            </div>
           </div>
-        </div>
-      </a>
-      <% } %>
+        </a>
+        <% } %>
   </div>
+
+
+
 
 
   <div class="mt-5 mb-5 card col-6 offset-3">
@@ -168,15 +139,6 @@
       <p>Open Source Contributor | MERN Stack Developer | JavaScript, MongoDB, Express, React, Node | Learned C & Web
         development | C++,DSA,Java,Golang | Learner</p>
     </div>
-
-    <!-- <div class="ceo">
-      <img src="https://res.cloudinary.com/dosg3vve9/image/upload/v1702187227/f12hpitiyznpvkfqiir8.png" alt="CEO"
-        class="ceo-photo">
-      <h3>Vikas Kumar</h3>
-      <p>CEO</p>
-      <p>Founded our company with a mission to revolutionize how we interact with technology and commitment to
-        innovation and customer-centric solutions.</p>
-    </div> -->
   </section>
 
 
@@ -274,7 +236,7 @@
 
       // Construct URL with selected locations as query parameters
       const queryParams = selectedLocations.map(location => `location=${encodeURIComponent(location)}`).join('&');
-      const filterURL = `/filter?${queryParams}`;
+      const filterURL = `/listings?${queryParams}`;
 
       // Redirect to the filter page with selected locations as query parameters
       window.location.href = filterURL;
@@ -289,5 +251,13 @@
     });
 
 
+
+
+    // Function to send a GET request to filter listings by type
+    function filterByType(type) {
+      const queryParams = `type=${encodeURIComponent(type)}`;
+      const filterURL = `/listings?${queryParams}`;
+      window.location.href = filterURL;
+    }
 
   </script>

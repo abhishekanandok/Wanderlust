@@ -1,9 +1,9 @@
 <% layout("/layouts/boilerplate") %>
 
-<script>
-  const mapToken = "<%= process.env.MAP_TOKEN %>";// because public js has no access of variables, so created here
-  const listing = <%- JSON.stringify(listing) %>;
-</script>
+  <script>
+    const mapToken = "<%= process.env.MAP_TOKEN %>";// because public js has no access of variables, so created here
+    const listing = <% - JSON.stringify(listing) %>;
+  </script>
 
 
   <div class="row mt-3">
@@ -16,14 +16,19 @@
       <img src="<%= listing.image.url %>" class="card-img-top show-img" alt="listing_image">
       <div class="card-body">
         <p class="card-text">
-        <p>Owned By:- <b>
-            <%= listing.owner.username %>
-          </b></p>
-        <%= listing.description %> <br>
-          <b>&#8377; <%= listing.price.toLocaleString("en-IN") %></b> <br>
-          <i class="fa-solid fa-location-dot"></i> <%= listing.location %>
-            <%= listing.country %>
-              </p>
+        <p>Owned By:- <b><%= listing.owner.username %></b></p>
+        <%= listing.description %> <br> <br>
+          <p>
+            <b>&#8377; <%= listing.price.toLocaleString("en-IN") %></b> <br>
+            <i class="fa-solid fa-location-dot"></i>
+            <%= listing.location %>
+              <%= listing.country %>
+          </p>
+          </p>
+          <!-- Display the type -->
+          <p><i class="fa-solid fa-tag"></i>
+            <%= listing.type %>
+          </p>
       </div>
     </div>
 
@@ -81,28 +86,37 @@
 
               <h4>All Reviews</h4>
               <div class="review-card">
-                <ul>
-                  <% for(review of listing.reviews) { %>
-                    <div class="review-card-list">
-                      <h5>@<%= review.author.username %>
-                      </h5>
-
+                <% for (let i = 0; i < listing.reviews.length; i += 2) { %>
+                  <div class="review-row">
+                    <div class="review-item">
+                      <h5>@<%= listing.reviews[i].author.username %></h5>
                       <h4>Rating</h4>
-                      <p class="starability-result" data-rating="<%= review.rating %>">
-                        Rated: <%= review.rating %> stars
+                      <p class="starability-result" data-rating="<%= listing.reviews[i].rating %>">
+                        Rated: <%= listing.reviews[i].rating %> stars
                       </p>
-
-                      <p>
-                        <%= review.comment %>
-                      </p>
-                      <form action="/listings/<%= listing._id %>/reviews/<%= review._id %>?_method=DELETE" method="post"
-                        class="mb-3">
+                      <p><%= listing.reviews[i].comment %></p>
+                      <form action="/listings/<%= listing._id %>/reviews/<%= listing.reviews[i]._id %>?_method=DELETE" method="post" class="mb-3">
                         <button class="btn btn-sm btn-dark">Delete</button>
                       </form>
                     </div>
+                    <% if (listing.reviews[i + 1]) { %>
+                      <div class="review-item">
+                        <h5>@<%= listing.reviews[i + 1].author.username %></h5>
+                        <h4>Rating</h4>
+                        <p class="starability-result" data-rating="<%= listing.reviews[i + 1].rating %>">
+                          Rated: <%= listing.reviews[i + 1].rating %> stars
+                        </p>
+                        <p><%= listing.reviews[i + 1].comment %></p>
+                        <form action="/listings/<%= listing._id %>/reviews/<%= listing.reviews[i + 1]._id %>?_method=DELETE" method="post" class="mb-3">
+                          <button class="btn btn-sm btn-dark">Delete</button>
+                        </form>
+                      </div>
                     <% } %>
-                </ul>
+                  </div>
+                <% } %>
               </div>
+              
+              
         </div>
 
 
@@ -110,6 +124,7 @@
 
 
   </div>
+  
   <div class="col-8 offset-3 mt-3">
     <h3>Where you'll be</h3>
     <div id="map"></div>

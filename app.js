@@ -22,6 +22,8 @@ const listingRouter = require("./routes/listing.js");
 const reviewRouter = require("./routes/review.js");
 const userRouter = require("./routes/user.js");
 
+const Listing = require("./models/listing");
+
 
 
 // const MONGO_URL = "mongodb://127.0.0.1:27017/wanderlust";
@@ -89,18 +91,18 @@ app.use(express.json());
 
 // Route for fetching suggestions based on entered text
 app.get('/search', async (req, res) => {
-  const searchTerm = req.query.q; // Get the search term from the query parameter
+    const searchTerm = req.query.q; // Get the search term from the query parameter
 
-  try {
-    // Perform a case-insensitive search on the 'title' field using regex
-    const result = await Card.find({ title: { $regex: searchTerm, $options: 'i' } })
-      .limit(8) // Limit the number of suggestions (adjust as needed)
-      .select('title'); // Select only the 'title' field
+    try {
+        // Perform a case-insensitive search on the 'title' field using regex
+        const result = await Card.find({ title: { $regex: searchTerm, $options: 'i' } })
+            .limit(8) // Limit the number of suggestions (adjust as needed)
+            .select('title'); // Select only the 'title' field
 
-    res.json(result); // Return the search suggestions as JSON
-  } catch (err) {
-    res.status(500).json({ message: err.message });
-  }
+        res.json(result); // Return the search suggestions as JSON
+    } catch (err) {
+        res.status(500).json({ message: err.message });
+    }
 });
 
 
@@ -108,13 +110,13 @@ app.get('/search', async (req, res) => {
 // Route to fetch location options from the 'listing' collection
 app.get('/locations', async (req, res) => {
     try {
-      const locations = await Card.distinct('location');
-      console.log(locations);
-      res.json(locations);
+        const locations = await Card.distinct('location');
+        console.log(locations);
+        res.json(locations);
     } catch (error) {
-      res.status(500).json({ message: error.message });
+        res.status(500).json({ message: error.message });
     }
-  });
+});
 
 
 

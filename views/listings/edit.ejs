@@ -2,15 +2,35 @@
 
 
   <h3>Edit your Listing</h3>
-  <form class="listing-form" method="POST" action="/listings/<%= listing._id %>?_method=PUT" enctype="multipart/form-data">
+  <form class="listing-form" method="POST" action="/listings/<%= listing._id %>?_method=PUT"
+    enctype="multipart/form-data">
     <div class="form-group">
       <label for="title">Title:</label>
       <input class="input-field" id="title" name="listing[title]" value="<%= listing.title %>" type="text" required />
     </div>
     <div class="form-group">
       <label for="description">Description:</label>
-      <textarea class="input-field textarea-field" id="description"
-        name="listing[description]" required><%= listing.description %></textarea>
+      <textarea class="input-field textarea-field" id="description" name="listing[description]"
+        required><%= listing.description %></textarea>
+    </div>
+
+    <div class="form-group">
+      <label for="type">Type:</label>
+      <select class="input-field" id="type" name="listing[type]" required>
+        <option value="" disabled selected>Select type</option>
+        <option value="Rooms" <% if (listing.type==='Rooms' ) { %> selected <% } %>>Rooms</option>
+        <option value="Iconic Cities" <% if (listing.type==='Iconic Cities' ) { %> selected <% } %>>Iconic Cities
+        </option>
+        <option value="Mountain" <% if (listing.type==='Mountain' ) { %> selected <% } %>>Mountain</option>
+        <option value="Castles" <% if (listing.type==='Castles' ) { %> selected <% } %>>Castles</option>
+        <option value="Amazing pools" <% if (listing.type==='Amazing pools' ) { %> selected <% } %>>Amazing pools
+        </option>
+        <option value="Farms" <% if (listing.type==='Farms' ) { %> selected <% } %>>Farms</option>
+        <option value="Camping" <% if (listing.type==='Camping' ) { %> selected <% } %>>Camping</option>
+        <option value="Arctic" <% if (listing.type==='Arctic' ) { %> selected <% } %>>Arctic</option>
+        <option value="Beach" <% if (listing.type==='Beach' ) { %> selected <% } %>>Beach</option>
+        <!-- Add more options as needed -->
+      </select>
     </div>
 
     <div class="mb-3">
@@ -26,16 +46,19 @@
     <div class="form-row">
       <div class="form-group">
         <label for="price">Price:</label>
-        <input class="input-field" id="price" name="listing[price]" value="<%= listing.price %>" type="number" required/>
+        <input class="input-field" id="price" name="listing[price]" value="<%= listing.price %>" type="number"
+          required />
       </div>
       <div class="form-group">
         <label for="country">Country:</label>
-        <input class="input-field" id="country" name="listing[country]" value="<%= listing.country %>" type="text" required/>
+        <input class="input-field" id="country" name="listing[country]" value="<%= listing.country %>" type="text"
+          required />
       </div>
     </div>
     <div class="form-group">
       <label for="location">Location:</label>
-      <input class="input-field" id="location" name="listing[location]" value="<%= listing.location %>" type="text" required/>
+      <input class="input-field" id="location" name="listing[location]" value="<%= listing.location %>" type="text"
+        required />
     </div>
     <button class="submit-btn">Edit</button>
   </form>

@@ -6,7 +6,11 @@ const geocodingClient = mbxGeocoding({ accessToken: mapToken });
 
 module.exports.index = async (req, res) => {
     const allListings = await Listing.find({});
-    res.render("listings/index.ejs", { allListings });
+    const selectedLocations = req.query.location; // Retrieve selected locations from query parameters
+    const { type } = req.query;
+    // console.log('Selected locations:', selectedLocations);
+    // console.log(type);
+    res.render("listings/index.ejs", { allListings, selectedLocations, type });
 };
 
 module.exports.renderNewForm = (req, res) => {
