@@ -234,33 +234,35 @@ select {
     display: flex;
     flex-direction: column;
     gap: 20px;
-  }
-  
-  .review-row {
+}
+
+.review-row {
     display: flex;
     gap: 20px;
-  }
-  
-  .review-item {
+}
+
+.review-item {
     background-color: #f9f9f9;
     padding: 15px;
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     flex: 1;
     min-width: 0;
-    max-width: calc(50% - 10px); /* Two items in a row with gap */
-    width: calc(50% - 10px); /* Two items in a row with gap */
-  }
-  
-  /* Adjust other styles as needed */
-  
-  
+    max-width: calc(50% - 10px);
+    /* Two items in a row with gap */
+    width: calc(50% - 10px);
+    /* Two items in a row with gap */
+}
+
+
 
 
 /* MAP */
 #map {
     height: 400px;
     width: 80vh;
+    border: #000000 2px dotted;
+    border-radius: 10px;
 }
 
 
@@ -374,14 +376,14 @@ h3 {
     border: none;
     border-radius: 5px;
     cursor: pointer;
-  }
+}
 
-#filterButton:hover{
+#filterButton:hover {
     background-color: #fc0000;
-  } 
-  
-  /* Filter popup styles */
-  /* Filter popup styles */
+}
+
+/* Filter popup styles */
+/* Filter popup styles */
 .filter-popup {
     display: none;
     position: fixed;
@@ -393,37 +395,38 @@ h3 {
     border: 1px solid #ccc;
     border-radius: 5px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2), 0 0 10px rgba(0, 0, 0, 0.1) inset;
-  }
-  
-  /* Adjust the submit button style */
-  #submitFilter {
+}
+
+/* Adjust the submit button style */
+#submitFilter {
     display: block;
     margin: 10px;
     background-color: #ff8a86;
     color: white;
     border-radius: 5px;
-  }
+}
 
-  #submitFilter:hover {
+#submitFilter:hover {
     background-color: #fa0707;
-  }
-  
-  
-  .filter-content {
-    max-height: 400px; /* Adjust as needed */
+}
+
+
+.filter-content {
+    max-height: 400px;
+    /* Adjust as needed */
     width: 400px;
     height: 800px;
     overflow-y: auto;
-  }
-  
-  .location-option {
+}
+
+.location-option {
     padding: 10px;
     cursor: pointer;
-  }
-  
-  .location-option:hover {
+}
+
+.location-option:hover {
     background-color: #f0f0f0;
-  }
+}
 
 
 
@@ -433,35 +436,35 @@ h3 {
 /**********************************/
 /*         filter icons          */
 /*********************************/
-  #filters {
+#filters {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-  }
+}
 
-  .filter {
+.filter {
     text-align: center;
     margin-top: 2rem;
     margin-right: 2rem;
     padding-bottom: 1rem;
     opacity: 0.7;
-  }
+}
 
-  .filter:hover {
+.filter:hover {
     opacity: 1;
     cursor: pointer;
     text-decoration: underline;
-  }
+}
 
-  .filter p {
+.filter p {
     font-size: 0.8rem;
-  }
+}
 
-  .tax-info {
+.tax-info {
     display: none;
-  }
+}
 
-  .tax-toggle {
+.tax-toggle {
     border: 1px solid black;
     border-radius: 1rem;
     height: 3rem;
@@ -469,4 +472,4 @@ h3 {
     margin-left: 2rem;
     display: flex;
     align-items: center;
-  }
+}
