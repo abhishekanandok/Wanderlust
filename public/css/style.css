@@ -61,14 +61,6 @@ body {
     margin-bottom: 10px;
 }
 
-
-
-/* ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-} */
-
 ul li {
     margin-bottom: 8px;
 }
@@ -414,7 +406,6 @@ h3 {
 }
 
 /* Filter popup styles */
-/* Filter popup styles */
 .filter-popup {
     display: none;
     position: fixed;
@@ -507,9 +498,6 @@ h3 {
     align-items: center;
 }
 
-
-
-
 .filter-wrapper {
     overflow-x: auto;
     white-space: nowrap;
@@ -534,23 +522,12 @@ h3 {
 
 
 
-
-
-
-
-
-
-
-
 /**********************************/
 /*     navbar responsive          */
 /*********************************/
 @media (max-width: 450px) {
-
-    /* Add custom styles for screens smaller than 450px */
     .navbar-collapse {
         background-color: white;
-        /* Set the background color to white */
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2), 0 0 10px rgba(252, 1, 1, 0.551) inset;
         padding: 2rem;
         border-radius: 10px;
@@ -580,16 +557,6 @@ h3 {
 /**********************************/
 /*     home page responsive       */
 /*********************************/
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -689,16 +656,10 @@ h3 {
     z-index: 99;
     /* Make sure it does not overlap */
     border: none;
-    /* Remove borders */
     outline: none;
     /* Remove outline */
-
     cursor: pointer;
-    /* Add a mouse pointer on hover */
-
     border-radius: 10px;
-    /* Rounded corners */
-
 }
 
 
@@ -713,26 +674,20 @@ h3 {
 .social-icons a {
     text-decoration: none;
     color: #333;
-    /* Change color as needed */
     margin-right: 10px;
-    /* Adjust spacing between icons */
 }
 
 .social-icons a:last-child {
     margin-right: 0;
-    /* Remove right margin from the last icon */
 }
 
 .social-icons i {
     font-size: 24px;
-    /* Change icon size as needed */
     transition: color 0.3s ease;
-    /* Add transition effect for color change */
 }
 
 .social-icons i:hover {
     color: #ff3838;
-    /* Change color on hover */
     scale: 1.09;
     transition: 0.3s ease;
 }
