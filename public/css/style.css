@@ -218,10 +218,16 @@ select {
 
 .show-img {
     height: 30vh;
+
 }
 
 .btns {
     display: flex;
+    margin-left: 5px;
+}
+
+.btn-margin {
+    margin-right: 15px;
 }
 
 
@@ -230,40 +236,65 @@ select {
 /**********************************/
 /*              review           */
 /*********************************/
-.review-card {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
+@media screen and (max-width: 450px) {
+    .review-item {
+        background-color: #f9f9f9;
+        padding: 15px;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        margin: 10px;
+    }
+
 }
 
-.review-row {
-    display: flex;
-    gap: 20px;
-}
+@media screen and (min-width: 451px) {
+    .review-card {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
 
-.review-item {
-    background-color: #f9f9f9;
-    padding: 15px;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    flex: 1;
-    min-width: 0;
-    max-width: calc(50% - 10px);
-    /* Two items in a row with gap */
-    width: calc(50% - 10px);
-    /* Two items in a row with gap */
+    .review-row {
+        display: flex;
+        gap: 20px;
+    }
+
+    .review-item {
+        background-color: #f9f9f9;
+        padding: 15px;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        flex: 1;
+        min-width: 0;
+        max-width: calc(50% - 10px);
+        /* Two items in a row with gap */
+        width: calc(50% - 10px);
+        /* Two items in a row with gap */
+    }
 }
 
 
 
 
 /* MAP */
+.map-container {
+    display: flex;
+
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+}
+
 #map {
     height: 400px;
     width: 80vh;
     border: #000000 2px dotted;
     border-radius: 10px;
 }
+
+
+
 
 
 /**********************************/
@@ -425,7 +456,7 @@ h3 {
 }
 
 .location-option:hover {
-    background-color: #f0f0f0;
+    background-color: #fb9b9b;
 }
 
 
@@ -454,6 +485,8 @@ h3 {
     opacity: 1;
     cursor: pointer;
     text-decoration: underline;
+    scale: 1.09;
+    transition: ease-out 0.1s;
 }
 
 .filter p {
@@ -469,7 +502,237 @@ h3 {
     border-radius: 1rem;
     height: 3rem;
     padding: 1rem;
-    margin-left: 2rem;
+    margin-left: 1rem;
     display: flex;
     align-items: center;
+}
+
+
+
+
+.filter-wrapper {
+    overflow-x: auto;
+    white-space: nowrap;
+    display: flex;
+    overflow-y: hidden;
+    overflow-x: scroll;
+}
+
+.filters {
+    display: flex;
+}
+
+.filter-wrapper::-webkit-scrollbar {
+    display: none;
+    /* Hide scrollbar on WebKit browsers */
+}
+
+.filters::-webkit-scrollbar {
+    width: 0px;
+    background: transparent;
+}
+
+
+
+
+
+
+
+
+
+
+
+/**********************************/
+/*     navbar responsive          */
+/*********************************/
+@media (max-width: 450px) {
+
+    /* Add custom styles for screens smaller than 450px */
+    .navbar-collapse {
+        background-color: white;
+        /* Set the background color to white */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2), 0 0 10px rgba(252, 1, 1, 0.551) inset;
+        padding: 2rem;
+        border-radius: 10px;
+    }
+
+    .search-container {
+        width: 35vh;
+    }
+
+    #searchInput {
+        padding: 5px;
+    }
+
+
+    /* filter popup */
+    .filter-content {
+        max-height: 300px;
+        /* Adjust as needed */
+        width: 300px;
+
+    }
+
+}
+
+
+
+/**********************************/
+/*     home page responsive       */
+/*********************************/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/**********************************/
+/*     footer responsive       */
+/*********************************/
+@media (max-width: 450px) {
+    .site-footer {
+        background-color: #f1f0f0;
+        color: #000000;
+        padding: 10px;
+        box-sizing: border-box;
+        margin-top: 5rem;
+    }
+
+    .footer-content {
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+
+    .footer-section {
+        flex: 1 1 250px;
+        /* Adjust width as needed */
+        padding-left: 2rem;
+    }
+
+    .footer-section h3 {
+        font-size: 15px;
+        margin-bottom: 10px;
+    }
+
+
+    .footer-bottom {
+        text-align: center;
+        padding-top: 20px;
+        border-top: 1px solid #666;
+        flex-wrap: wrap;
+        font-size: 10px;
+    }
+
+    .language-currency {
+        margin-top: 5px;
+        display: flex;
+        justify-content: center;
+        font-size: 10px;
+    }
+
+    .language-currency span {
+        margin-right: 1px;
+    }
+
+    select {
+        padding: 1px;
+        margin-right: 1px;
+    }
+}
+
+
+
+
+
+
+/**********************************/
+/*     show page responsive       */
+/*********************************/
+@media (max-width: 450px) {
+
+    /* MAP */
+    #map {
+        height: 300px;
+        width: 43vh;
+    }
+}
+
+
+
+
+/**********************************/
+/*     scrool to top       */
+/*********************************/
+#myBtn {
+    display: none;
+    /* Hidden by default */
+    position: fixed;
+    /* Fixed/sticky position */
+    bottom: 20px;
+    /* Place the button at the bottom of the page */
+    right: 30px;
+    /* Place the button 30px from the right */
+    z-index: 99;
+    /* Make sure it does not overlap */
+    border: none;
+    /* Remove borders */
+    outline: none;
+    /* Remove outline */
+
+    cursor: pointer;
+    /* Add a mouse pointer on hover */
+
+    border-radius: 10px;
+    /* Rounded corners */
+
+}
+
+
+
+
+
+
+
+/**********************************/
+/*          social icon         */
+/*********************************/
+.social-icons a {
+    text-decoration: none;
+    color: #333;
+    /* Change color as needed */
+    margin-right: 10px;
+    /* Adjust spacing between icons */
+}
+
+.social-icons a:last-child {
+    margin-right: 0;
+    /* Remove right margin from the last icon */
+}
+
+.social-icons i {
+    font-size: 24px;
+    /* Change icon size as needed */
+    transition: color 0.3s ease;
+    /* Add transition effect for color change */
+}
+
+.social-icons i:hover {
+    color: #ff3838;
+    /* Change color on hover */
+    scale: 1.09;
+    transition: 0.3s ease;
 }

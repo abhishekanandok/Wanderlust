@@ -2,64 +2,73 @@
 
 
   <div class="" id="filters">
-    <div class="filter" onclick="filterByType('Rooms')">
-      <div><i class="fa-solid fa-fire"></i></div>
-      <p>Trending</p>
-    </div>
 
-    <div class="filter" onclick="filterByType('Rooms')">
-      <div><i class="fa-solid fa-bed"></i></div>
-      <p>Rooms</p>
-    </div>
+    <div class="filter-wrapper">
 
-    <div class="filter" onclick="filterByType('Iconic Cities')">
-      <div><i class="fa-solid fa-mountain-city"></i></div>
-      <p>Iconic Cities</p>
-    </div>
 
-    <div class="filter" onclick="filterByType('Mountain')">
-      <div><i class="fa-solid fa-mountain"></i></div>
-      <p>Mountain</p>
-    </div>
+      <div class="filter" onclick="filterByType('Rooms')">
+        <div><i class="fa-solid fa-fire"></i></div>
+        <p>Trending</p>
+      </div>
 
-    <div class="filter" onclick="filterByType('Castles')">
-      <div><i class="fa-brands fa-fort-awesome"></i></div>
-      <p>Castles</p>
-    </div>
+      <div class="filter" onclick="filterByType('Rooms')">
+        <div><i class="fa-solid fa-bed"></i></div>
+        <p>Rooms</p>
+      </div>
 
-    <div class="filter" onclick="filterByType('Amazing pools')">
-      <div><i class="fa-solid fa-person-swimming"></i></div>
-      <p>Amazing pools</p>
-    </div>
+      <div class="filter" onclick="filterByType('Iconic Cities')">
+        <div><i class="fa-solid fa-mountain-city"></i></div>
+        <p>Iconic Cities</p>
+      </div>
 
-    <div class="filter" onclick="filterByType('Farms')">
-      <div><i class="fa-solid fa-cow"></i></div>
-      <p>Farms</p>
-    </div>
+      <div class="filter" onclick="filterByType('Mountain')">
+        <div><i class="fa-solid fa-mountain"></i></div>
+        <p>Mountain</p>
+      </div>
 
-    <div class="filter" onclick="filterByType('Camping')">
-      <div><i class="fa-solid fa-tents"></i></div>
-      <p>Camping</p>
-    </div>
+      <div class="filter" onclick="filterByType('Castles')">
+        <div><i class="fa-brands fa-fort-awesome"></i></div>
+        <p>Castles</p>
+      </div>
 
-    <div class="filter" onclick="filterByType('Arctic')">
-      <div><i class="fa-regular fa-snowflake"></i></div>
-      <p>Arctic</p>
-    </div>
+      <div class="filter" onclick="filterByType('Amazing pools')">
+        <div><i class="fa-solid fa-person-swimming"></i></div>
+        <p>Amazing pools</p>
+      </div>
 
-    <div class="filter" onclick="filterByType('Beach')">
-      <div><i class="fa-solid fa-umbrella-beach"></i></div>
-      <p>Beach</p>
-    </div>
+      <div class="filter" onclick="filterByType('Farms')">
+        <div><i class="fa-solid fa-cow"></i></div>
+        <p>Farms</p>
+      </div>
 
-    <div class="filter" onclick="filterByType('Arctic')">
-      <div><i class="fa-regular fa-snowflake"></i></div>
-      <p>Arctic</p>
-    </div>
+      <div class="filter" onclick="filterByType('Camping')">
+        <div><i class="fa-solid fa-tents"></i></div>
+        <p>Camping</p>
+      </div>
 
-    <div class="filter" onclick="filterByType('Beach')">
-      <div><i class="fa-solid fa-umbrella-beach"></i></div>
-      <p>Beach</p>
+      <div class="filter" onclick="filterByType('Arctic')">
+        <div><i class="fa-regular fa-snowflake"></i></div>
+        <p>Arctic</p>
+      </div>
+
+      <div class="filter" onclick="filterByType('Beach')">
+        <div><i class="fa-solid fa-umbrella-beach"></i></div>
+        <p>Beach</p>
+      </div>
+
+      <div class="filter" onclick="filterByType('Arctic')">
+        <div><i class="fa-regular fa-snowflake"></i></div>
+        <p>Arctic</p>
+      </div>
+
+      <div class="filter" onclick="filterByType('Beach')">
+        <div><i class="fa-solid fa-umbrella-beach"></i></div>
+        <p>Beach</p>
+      </div>
+
+
+
+
     </div>
 
 
@@ -82,6 +91,8 @@
     </div>
 
   </div>
+
+
 
 
 
@@ -108,11 +119,11 @@
                 &#8377; <%= listing.price.toLocaleString("en-IN") %> / night <i class="tax-info"> &nbsp; +18% GST</i>
                   <p><i class="fa-solid fa-location-dot"></i>
                     <%= listing.location %> <br>
-                    <i class="fa-solid fa-tag"></i>
-                  <%= listing.type %>
+                      <i class="fa-solid fa-tag"></i>
+                      <%= listing.type %>
                   </p>
-                  
-                  </p>
+
+              </p>
               </p>
             </div>
           </div>
@@ -135,6 +146,13 @@
       <img src="https://res.cloudinary.com/dosg3vve9/image/upload/v1702187208/d0ugpkjbuelkahzkrl9r.jpg" alt="Founder"
         class="founder-photo">
       <h3>Abhishek Anand</h3>
+      <div class="social-icons">
+        <a href="https://www.linkedin.com/in/abhishekanandok" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="https://github.com/abhishekanandok" target="_blank"><i class="fab fa-github"></i></a>
+        <a href="https://www.instagram.com/abhishekanandok" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://twitter.com/AbhishekAnandok" target="_blank"><i class="fab fa-twitter"></i></a>
+      </div>
+      
       <p>Founder</p>
       <p>Open Source Contributor | MERN Stack Developer | JavaScript, MongoDB, Express, React, Node | Learned C & Web
         development | C++,DSA,Java,Golang | Learner</p>
@@ -259,5 +277,12 @@
       const filterURL = `/listings?${queryParams}`;
       window.location.href = filterURL;
     }
+
+
+
+
+
+
+
 
   </script>
