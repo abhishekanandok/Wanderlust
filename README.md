@@ -46,7 +46,7 @@ Check out the live version of the project at [[WanderLust](https://wanderlust-u6
 
 ## Author
 
-- **Your Name**
+- **Abhishek Anand**
 - GitHub: [[Abhishek Anand](https://github.com/abhishekanandok)]
 - LinkedIn: [[Abhishek Anand](https://www.linkedin.com/in/abhishekanandok)])
 
