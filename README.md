@@ -42,7 +42,7 @@ This is a hotel and property booking website, inspired by Airbnb. It's built usi
 
 ## Live Website
 
-Check out the live version of the project at [[[WanderLust]((https://wanderlust-abhishekanandok.vercel.app/))](https://wanderlust-abhishekanandok.vercel.app/)].
+Check out the live version of the project at [[Wanderlust](https://wanderlust-abhishekanandok.vercel.app/)].
 
 ## Author
 
