@@ -2,6 +2,10 @@
 
 This is a hotel and property booking website, inspired by Airbnb. It's built using HTML, CSS, JavaScript, Node.js, Express, MongoDB, EJS, Bootstrap, and follows the MVC (Model-View-Controller) architecture.
 
+## Pic
+![image](https://github.com/abhishekanandok/Wanderlust/assets/112304737/a6089e07-cd1e-421d-981b-0360f631e6ab)
+
+
 ## Features
 
 - **User Authentication**: Allows users to sign up, log in, and log out.
