@@ -38,7 +38,7 @@ main()
     });
 
 async function main() {
-    await mongoose.connect(dbUrl);
+    await mongoose.connect(dbUrl);//database url
 }
 
 
